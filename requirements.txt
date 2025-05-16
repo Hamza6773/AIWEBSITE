@@ -3,3 +3,4 @@ Werkzeug==2.2.2
 tensorflow>=2.5
 Pillow
 numpy
+gunicorn==20.1.0
