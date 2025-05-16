@@ -32,7 +32,7 @@ def preprocess_image(path):
         img = img.crop(bbox)
     img = img.resize(TARGET_SIZE)
     arr = np.array(img, dtype=np.float32) / 255.0
-    # Match interpreter’s expected shape
+    # Match interpreter's expected shape
     return np.expand_dims(arr, axis=(0, -1))
 
 @app.route('/', methods=['GET', 'POST'])
@@ -68,4 +68,5 @@ def uploaded_file(filename):
     return redirect(url_for('static', filename=f'uploads/{filename}'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
